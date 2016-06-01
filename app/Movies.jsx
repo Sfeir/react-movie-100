@@ -15,9 +15,9 @@ var Movies = React.createClass({
 	},
 
 	componentDidMount: function () {
-		var movies = MovieAPI.fetchMovies();
-
-		this.setState({movies: movies});
+		MovieAPI.fetchMovies().then(function (movies) {
+			this.setState({movies: movies});
+		}.bind(this));
 	},
 
 	addMovie: function (movie) {
