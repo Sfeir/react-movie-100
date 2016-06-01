@@ -21,12 +21,15 @@ var Movies = React.createClass({
 	},
 
 	addMovie: function (movie) {
-		var newMovieList = this.state.movies.concat([movie]);
+		MovieAPI.addMovie(movie)
+		.then(function (newMovie) {
+			var newMovieList = this.state.movies.concat([newMovie]);
 
-		this.setState({
-			movies: newMovieList,
-			creating: false
-		});
+			this.setState({
+				movies: newMovieList,
+				creating: false
+			});
+		}.bind(this));
 	},
 
 	deleteMovie: function (movieID) {
