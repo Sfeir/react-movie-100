@@ -4,6 +4,8 @@ var Movie = require('./Movie.jsx');
 
 var MovieAPI = require('./MovieAPI.js');
 
+var MovieForm = require('./MovieForm.jsx');
+
 var Movies = React.createClass({
 	getInitialState: function () {
 		return {
@@ -29,7 +31,7 @@ var Movies = React.createClass({
 		});
 	},
 
-	render: function () {
+	renderMovieList: function () {
 		var movies = this.state.movies.map(function (movie) {
 			return <Movie key={movie.id} movie={movie} onDelete={this.deleteMovie.bind(this, movie.id)} />
 		}, this);
@@ -39,6 +41,15 @@ var Movies = React.createClass({
 				{movies}
 			</ul>
 		);
+	},
+
+	renderNewMovieForm: function () {
+		return <MovieForm />;
+	},
+
+	render: function () {
+		// return this.renderMovieList();
+		return this.renderNewMovieForm();
 	}
 });
 

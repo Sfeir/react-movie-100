@@ -33,3 +33,7 @@ nav .brand-logo {
 	bottom: 15px;
 	z-index: 999;
 }
+
+.movie-form {
+	padding: 1rem;
+}
