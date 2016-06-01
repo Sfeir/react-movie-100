@@ -30,7 +30,7 @@ var MovieForm = React.createClass({
 
 					<div className="row right-align">
 						<div className="col s12">
-							<button className="btn waves-effect waves-light" type="submit" name="action">Submit
+							<button className="btn waves-effect waves-light" type="submit" name="action">Sauvegarder
 								<i className="material-icons right">send</i>
 							</button>
 						</div>
