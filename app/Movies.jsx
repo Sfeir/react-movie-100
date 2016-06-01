@@ -20,6 +20,15 @@ var Movies = React.createClass({
 		this.setState({movies: movies});
 	},
 
+	addMovie: function (movie) {
+		var newMovieList = this.state.movies.concat([movie]);
+
+		this.setState({
+			movies: newMovieList,
+			creating: false
+		});
+	},
+
 	deleteMovie: function (movieID) {
 		var newMovieList = this.state.movies.filter(function (movie) {
 			return movie.id !== movieID;
@@ -52,7 +61,7 @@ var Movies = React.createClass({
 	},
 
 	renderNewMovieForm: function () {
-		return <MovieForm/>;
+		return <MovieForm onSave={this.addMovie}/>;
 	},
 
 	render: function () {

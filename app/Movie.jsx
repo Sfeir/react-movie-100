@@ -3,7 +3,7 @@ var React = require('react');
 var Movie = React.createClass({
 	render: function () {
 		var movie = this.props.movie,
-			poster = movie.poster || 'no-poster.jpg',
+			poster = movie.poster || 'img/no-poster.jpg',
 			onDelete = this.props.onDelete;
 
 		return (
