@@ -9,8 +9,15 @@ var MovieForm = require('./MovieForm.jsx');
 var Movies = React.createClass({
 	getInitialState: function () {
 		return {
-			movies: []
+			movies: [],
+			creating: false
 		}
+	},
+
+	componentDidMount: function () {
+		var movies = MovieAPI.fetchMovies();
+
+		this.setState({movies: movies});
 	},
 
 	deleteMovie: function (movieID) {
@@ -18,38 +25,38 @@ var Movies = React.createClass({
 			return movie.id !== movieID;
 		});
 
-		this.setState({
-			movies: newMovieList
-		});
+		this.setState({movies: newMovieList});
 	},
 
-	componentDidMount: function () {
-		var movies = MovieAPI.fetchMovies();
-
+	showMovieForm: function () {
 		this.setState({
-			movies: movies
+			creating: true
 		});
 	},
 
 	renderMovieList: function () {
 		var movies = this.state.movies.map(function (movie) {
-			return <Movie key={movie.id} movie={movie} onDelete={this.deleteMovie.bind(this, movie.id)} />
+			return <Movie key={movie.id} movie={movie} onDelete={this.deleteMovie.bind(this, movie.id)}/>
 		}, this);
 
 		return (
-			<ul className="row">
-				{movies}
-			</ul>
+			<div>
+				<ul className="row">
+					{movies}
+				</ul>
+				<a className="new-movie-btn btn-floating btn-large waves-effect waves-light red" onClick={this.showMovieForm}>
+					<i className="material-icons">add</i>
+				</a>
+			</div>
 		);
 	},
 
 	renderNewMovieForm: function () {
-		return <MovieForm />;
+		return <MovieForm/>;
 	},
 
 	render: function () {
-		// return this.renderMovieList();
-		return this.renderNewMovieForm();
+		return this.state.creating ? this.renderNewMovieForm() : this.renderMovieList();
 	}
 });
 

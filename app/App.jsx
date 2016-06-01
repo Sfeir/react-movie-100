@@ -11,7 +11,6 @@ var App = React.createClass({
 			<div>
 				<Header/>
 				<Movies/>
-				<a className="new-movie-btn btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
 			</div>
 		);
 	}
