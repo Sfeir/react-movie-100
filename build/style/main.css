@@ -29,7 +29,7 @@ nav .brand-logo {
 
 .new-movie-btn {
 	position: fixed;
-	right: 15%;
+	right: 5%;
 	bottom: 15px;
 	z-index: 999;
 }

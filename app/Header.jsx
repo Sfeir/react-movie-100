@@ -5,7 +5,7 @@ var Header = React.createClass({
 		return (
 			<nav className="blue-grey darken-4">
 				<div className="nav-wrapper">
-					<a href="#" className="brand-logo">ReactMovie</a>
+					<a href="#" className="brand-logo center">ReactMovie</a>
 				</div>
 			</nav>
 		);
