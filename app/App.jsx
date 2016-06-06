@@ -3,15 +3,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+var Header = require('./Header.jsx');
+
 var App = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<nav className="blue-grey darken-4">
-					<div className="nav-wrapper">
-						<a href="#" className="brand-logo center">ReactMovie</a>
-					</div>
-				</nav>
+				<Header />
 
 				<div>
 					<ul className="row">
