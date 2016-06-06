@@ -6,3 +6,26 @@ header {
 .thumbnails li {
   margin-bottom: 15px;
 }
+
+.movie .movie__card .movie__card__category {
+	margin-bottom: 1rem;
+}
+
+.movie .movie__card .movie__card__synopsis {
+	font-size: 0.8rem;
+}
+
+.movie .card-action a {
+	margin-right: 0 !important;
+}
+
+.new-movie-btn {
+	position: fixed;
+	right: 5%;
+	bottom: 15px;
+	z-index: 999;
+}
+
+.movie-form {
+	padding: 1rem;
+}
