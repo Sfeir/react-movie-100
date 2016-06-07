@@ -22,10 +22,22 @@ var Movies = React.createClass({
 		}.bind(this));
 	},
 
+	deleteMovie: function (movieID) {
+		MovieAPI.removeMovie(movieID)
+		.then(function () {
+			var newMovieList = this.state.movies.filter(function (movie) {
+				return movie.id !== movieID;
+			});
+
+			this.setState({movies: newMovieList});
+
+		}.bind(this));
+	},
+
 	render: function () {
 		var movies = this.state.movies.map(function (movie) {
-			return <Movie key={movie.id} movie={movie} />;
-		});
+			return <Movie key={movie.id} movie={movie} onDelete={this.deleteMovie.bind(this, movie.id)} />;
+		}, this);
 
 		return (
 			<div>

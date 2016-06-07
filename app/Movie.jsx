@@ -6,7 +6,8 @@ var Movie = React.createClass({
 
 	render: function () {
 		var movie = this.props.movie,
-			poster = movie.poster || 'img/no-poster.jpg';
+			poster = movie.poster || 'img/no-poster.jpg',
+			onDelete = this.props.onDelete;
 
 		return (
 			<li className="movie col s3">
@@ -27,7 +28,7 @@ var Movie = React.createClass({
 					</div>
 
 					<div className="card-action right-align">
-						<a href="#">
+						<a href="#" onClick={onDelete}>
 							<i className="material-icons">delete</i>
 						</a>
 					</div>
