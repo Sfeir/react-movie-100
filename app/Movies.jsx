@@ -2,13 +2,28 @@
 
 var React = require('react');
 
-var MOVIES = require('./api/MoviesData.js');
+var MovieAPI = require('./api/MovieAPI');
 
 var Movie = require('./Movie.jsx');
 
 var Movies = React.createClass({
+	getInitialState: function () {
+		return {
+			movies: []
+		};
+	},
+
+	componentWillMount: function () {
+		MovieAPI.fetchMovies()
+		.then(function (movies) {
+			this.setState({
+				movies: movies
+			});
+		}.bind(this));
+	},
+
 	render: function () {
-		var movies = MOVIES.map(function (movie) {
+		var movies = this.state.movies.map(function (movie) {
 			return <Movie key={movie.id} movie={movie} />;
 		});
 
