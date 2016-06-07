@@ -24,6 +24,18 @@ var Movies = React.createClass({
 		}.bind(this));
 	},
 
+	addMovie: function (movie) {
+		MovieAPI.addMovie(movie)
+		.then(function (newMovie) {
+			var newMovieList = this.state.movies.concat([newMovie]);
+
+			this.setState({
+				movies: newMovieList,
+				creating: false
+			});
+		}.bind(this));
+	},
+
 	deleteMovie: function (movieID) {
 		MovieAPI.removeMovie(movieID)
 		.then(function () {
@@ -60,7 +72,7 @@ var Movies = React.createClass({
 	},
 
 	renderNewMovieForm: function () {
-		return <MovieForm />;
+		return <MovieForm onSave={this.addMovie}/>;
 	},
 
 	render: function () {

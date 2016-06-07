@@ -10,7 +10,11 @@ var MovieForm = React.createClass({
 	onSave: function (event) {
 		event.preventDefault();
 
-		/* TO IMPLEMENT */
+		this.props.onSave({
+			title: this.refs.title.value,
+			category: this.refs.category.value,
+			synopsis: this.refs.synopsis.value
+		});
 	},
 
 	render: function () {
@@ -22,19 +26,19 @@ var MovieForm = React.createClass({
 					</div>
 					<div className="row">
 						<div className="input-field col s12">
-							<input placeholder="Titre du film" type="text" className="validate"/>
+							<input ref="title" placeholder="Titre du film" type="text" className="validate"/>
 							<label className="active">Titre</label>
 						</div>
 					</div>
 					<div className="row">
 						<div className="input-field col s12">
-							<input placeholder="Categorie du film" type="text" className="validate"/>
+							<input ref="category" placeholder="Categorie du film" type="text" className="validate"/>
 							<label for="last_name" className="active">Categorie</label>
 						</div>
 					</div>
 					<div className="row">
 						<div className="input-field col s12">
-							<textarea className="materialize-textarea"></textarea>
+							<textarea ref="synopsis" className="materialize-textarea"></textarea>
 							<label className="active">Synopsis</label>
 						</div>
 					</div>
