@@ -7,6 +7,12 @@ header {
   margin-bottom: 15px;
 }
 
+.card .card-image .card-title {
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	top: 0;
+}
+
 .movie .movie__card .movie__card__category {
 	margin-bottom: 1rem;
 }
