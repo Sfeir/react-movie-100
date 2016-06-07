@@ -2,6 +2,8 @@
 
 var React = require('react');
 
+var MOVIES = require('./api/MoviesData.js');
+
 var Movies = React.createClass({
 	render: function () {
 		return (
