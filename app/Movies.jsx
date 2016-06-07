@@ -5,11 +5,13 @@ var React = require('react');
 var MovieAPI = require('./api/MovieAPI');
 
 var Movie = require('./Movie.jsx');
+var MovieForm = require('./MovieForm.jsx');
 
 var Movies = React.createClass({
 	getInitialState: function () {
 		return {
-			movies: []
+			movies: [],
+			creating: false
 		};
 	},
 
@@ -34,7 +36,13 @@ var Movies = React.createClass({
 		}.bind(this));
 	},
 
-	render: function () {
+	showMovieForm: function () {
+		this.setState({
+			creating: true
+		});
+	},
+
+	renderMovieList: function () {
 		var movies = this.state.movies.map(function (movie) {
 			return <Movie key={movie.id} movie={movie} onDelete={this.deleteMovie.bind(this, movie.id)} />;
 		}, this);
@@ -44,11 +52,19 @@ var Movies = React.createClass({
 				<ul className="row">
 					{movies}
 				</ul>
-				<a className="new-movie-btn btn-floating btn-large waves-effect waves-light red">
+				<a className="new-movie-btn btn-floating btn-large waves-effect waves-light red" onClick={this.showMovieForm}>
 					<i className="material-icons">add</i>
 				</a>
 			</div>
 		);
+	},
+
+	renderNewMovieForm: function () {
+		return <MovieForm />;
+	},
+
+	render: function () {
+		return this.state.creating ? this.renderNewMovieForm() : this.renderMovieList();
 	}
 });
 
