@@ -8,13 +8,14 @@ var Movie = require('./Movie.jsx');
 
 var Movies = React.createClass({
 	render: function () {
+		var movies = MOVIES.map(function (movie) {
+			return <Movie key={movie.id} movie={movie} />;
+		});
+
 		return (
 			<div>
 				<ul className="row">
-					<Movie movie={MOVIES[0]} />
-					<Movie movie={MOVIES[1]} />
-					<Movie movie={MOVIES[2]} />
-					<Movie movie={MOVIES[3]} />
+					{movies}
 				</ul>
 				<a className="new-movie-btn btn-floating btn-large waves-effect waves-light red">
 					<i className="material-icons">add</i>
